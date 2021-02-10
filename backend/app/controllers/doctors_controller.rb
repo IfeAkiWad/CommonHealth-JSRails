@@ -4,9 +4,14 @@ class DoctorsController < ApplicationController
 
   # GET /doctors
   def index
-    @doctors = Doctor.all
-
-    render json: @doctors, except: [:created_at, :updated_at]
+      if !params[:location].blank?
+        @doctors = Doctor.by_location(params[:location]) 
+    elsif !params[:specialty].blank?
+        @doctors = Doctor.by_specialty(params[:specialty])
+    else
+        @doctors = @user.doctors
+        render json: @doctors, except: [:created_at, :updated_at]
+    end
   end
 
   # GET /doctors/1
