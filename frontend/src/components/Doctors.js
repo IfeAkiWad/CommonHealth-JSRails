@@ -19,11 +19,11 @@ class Doctors {
             // iterating through the doctors data
             for (const doctor of doctors){
                 let d = new Doctors(
-                    doctor.id
-                    doctor.name
-                    doctor.specialty
-                    doctor.insurance_accepted
-                    doctor.location
+                    doctor.id,
+                    doctor.name,
+                    doctor.specialty,
+                    doctor.insurance_accepted,
+                    doctor.location,
                     doctor.user_id)
                 d.renderDoctor()
             }
