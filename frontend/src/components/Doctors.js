@@ -1,9 +1,8 @@
 class Doctors {
-    constructor(id, name, specialty, insurance_accepted, location, user_id) {
+    constructor(id, name, specialty, location, user_id) {
         this.id = id
         this.name = name
         this.specialty = specialty
-        this.insurance_accepted = insurance_accepted
         this.location = location
         this.user_id = user_id
     }
@@ -11,7 +10,7 @@ class Doctors {
     // class function
         // get doctor index
     static getAllDoctors() {
-        fetch('http://localhost:3000/projects')
+        fetch('http://localhost:3000/doctors')
         .then((response) => response.json())
         .then(doctors => {
             console.log(doctors)
@@ -22,22 +21,29 @@ class Doctors {
                     doctor.id,
                     doctor.name,
                     doctor.specialty,
-                    doctor.insurance_accepted,
                     doctor.location,
                     doctor.user_id)
-                d.renderDoctor()
+                d.renderDoctors()
+                // debugger
             }
         })
     }
 
     // render doctor instance to DOM
-    renderDoctor() {
-        let doctorsDiv = document.getElementById('doctor-container')
+    renderDoctors() {
+        let doctorsDiv = document.getElementById('doctors-container')
 
         doctorsDiv.innerHTML +=
         `
-        
-        `
+        <ul>
+        <label>Doctor name:</label> 
+        ${this.name}
+        <label>Doctor location:</label> 
+        ${this.location}
+        <label>Doctor specialty:</label>
+        ${this.specialty}
+        </ul>
+       `
     }
 
 
